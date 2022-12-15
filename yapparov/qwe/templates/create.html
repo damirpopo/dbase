@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Добавление товара</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <p>
+            <label>Введите название товара</label><br>
+            <input type="text" name="name">
+        </p>
+        <p>
+            <label>Введите цену</label><br>
+            <input type="text" name="price">
+        </p>
+        <p>
+            <label>Введите компанию</label><br>
+            <select name="company" id="">
+                {% for company in companies %}
+                    <option value="{{ company.id }}">{{ company.name }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+</body>
+</html>

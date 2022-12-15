@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Список товаров</h1>
+    <a href="/create">Добавление товара</a>
+    <table>
+        <thead><th>Название</th><th>Компания</th><th>Цена</th></thead>
+            {% for product in products %}
+                <tr>
+
+                <td>{{ product.name }}</td>
+                <td>{{ product.company.name }}</td>
+                <td>{{ product.price }}</td>
+                
+                <td>
+                    <a href="edit/{{ product.id }}"> Изменить</a>  <a href="delete/{{ product.id }}">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Изменить товар</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>
+            <label>Введите название товара</label>
+            <input type="text" name="name" value="{{ product.name }}">
+        </p>
+        <p>
+            <label>Введите цену</label>
+            <input type="number" name="price" value="{{ product.price }}">
+        </p>
+        <p>
+            <label>Введите компанию</label>
+            <select name="company">
+                {% for company in companies %}
+                    <option value="{{ company.id }}"{{ company.name }}
+                    {% if company.id == product.company_id %}
+                        selected
+                    {% endif %}>
+                    {{ company.name }} </option>
+                 {% endfor %}
+            </select>
+            <input type="submit">
+        </p>
+    </form>
+</body>
+</html>
